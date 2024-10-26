@@ -1,0 +1,105 @@
+/* General styling for the header */
+header {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  font-size: large;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+/* Styling for the logo */
+.navbar-brand img {
+  max-height: 50px;
+  width: auto;
+}
+
+/* Style for dropdown */
+.dropdown-menu {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-weight: bold ;
+}
+.dropdown-item  {
+  font-weight: 500 ;
+ 
+}
+.dropdown-item:hover  {
+  background-color: #ffffff;
+  color: #018a2a;
+  font-weight: bold ;
+
+}
+
+
+
+/* Enable dropdown on hover for larger screens */
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  
+ 
+  
+  .navbar .dropdown:hover .nav-link {
+    color: #018a2a;
+  }
+  .nav-link{
+    transition: transform .1s;
+
+  }
+  .nav-link:hover{
+    color: #018a2a;
+    transform: scale(1.1);
+  }
+  .nav-item{
+    padding: 0 10px;
+  }
+  .dropdown-item{
+    text-align: end;
+    padding: 10px  ;
+  }
+  .tab-icon{
+    width: 25px;
+    margin: 5px;
+  }
+  .drop-tab-icon{
+    width: 35px;
+    margin: 5px;
+  }
+  .dropdown-item {
+    padding:5px 20px;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler:focus {
+    outline: none;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    margin-right: 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-item {
+    padding: 10px;
+  }
+}

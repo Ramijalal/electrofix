@@ -1,0 +1,6 @@
+{
+    "require": {
+        "sergeytsalkov/meekrodb": "^3.0",
+        "phpoffice/phpword": "^1.2"
+    }
+}

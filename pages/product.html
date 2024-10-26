@@ -1,0 +1,338 @@
+<style>
+  .thumbnail-container img {
+    width: 100px;
+    /* or any desired width */
+    height: 100px;
+    /* or any desired height */
+    margin: 0 3px;
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+    border-radius: 5px;
+    /* Optional: rounded corners */
+    cursor: pointer;
+    /* Optional: indicates it's clickable */
+    border-radius: 20px;
+    transition: transform 0.1s ease-in-out;
+  }
+  .thumbnail-container img:hover{
+    transform: scale(1.1);
+
+  }
+  .main {
+    direction: rtl;
+  }
+
+  #price {
+    font-weight: 700 !important;
+    margin: 0;
+    font-size: 2.8rem;
+  }
+
+  .product-currency {
+    font-size: 1.6rem;
+  }
+
+  #quantity {
+    width: 100px;
+  }
+
+  #description {
+    font-weight: 400;
+    margin-top: 20px;
+  }
+
+  #quantity-label {
+    margin-left: 20px;
+  }
+
+  #orderButton {
+    font-size: 1.5rem;
+    padding: 10px;
+    border-color: #aaa;
+    color: white;
+    margin: 50px auto !important;
+    background-color: #d3031c;
+    border-radius: 20px;
+    transition: background-color  .2s ease-in-out;
+  }
+  #orderButton:hover {
+    background-color: #ed263d;
+  }
+  #orderbutton_container {
+    display: flex;
+  }
+
+  #shipping-container {
+    margin: 10px 0;
+    border: 2px solid rgb(207, 207, 207);
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  #product-stars-container {
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    margin: 10px;
+    margin-top: 20px;
+    height: 25px;
+  }
+
+  @media (max-width: 768px) {
+    .thumbnail-container img {
+      width: 70px;
+      /* Adjust width for mobile */
+      height: 70px;
+      /* Adjust height for mobile */
+    }
+
+    #shipping-container {
+      font-size: 1rem;
+      margin: 10px;
+      width: 100%;
+    }
+  }
+</style>
+<div class="container d-flex flex-column justify-content-center align-content-center mt-5">
+  <!-- this is the order popup form modal container  -->
+  <div id="modalContainer"></div>
+  <!-- ---------------- -->
+
+
+  <!-- this is the single product template  -->
+  <div id="product-template-container" hidden></div>
+  <!-- ------------------------------ -->
+
+
+  <div class="container main">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="product-container shadow border p-5 rounded-5" id="productContainer" data_product_id="">
+          <div class="row">
+
+
+            <div class="col-md-6 text-center img-container">
+              <img alt="Product Image" id="mainProductImage" class="img-fluid product-image border rounded-5 shadow"
+                src="uploads\Screenshot_25-6-2024_21260_www.aliexpress.com.jpeg" />
+              <!-- Thumbnail images -->
+              <div class="thumbnail-container mt-3 d-flex justify-content-center">
+                <img src="uploads\Screenshot_25-6-2024_211518_www.aliexpress.com.jpeg"
+                  class="img-thumbnail small-image rounded-5 mx-1" style="width: 100px; height: 100px; cursor: pointer"
+                  alt="Thumbnail 3" />
+                <!-- Add more thumbnail images as needed -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div id="shipping-container">
+                <img src="assets/icons/shipping_red.png" style="height: 40px; margin:5px 10px;"></img>
+                <span>الشحن الى جميع المدن المغربية </span>
+              </div>
+              <div id="product-stars-container">
+                <span>تقييم المنتج : </span>
+                <img src="assets/icons/star.png" alt="star img">
+                <img src="assets/icons/star.png" alt="star img">
+                <img src="assets/icons/star.png" alt="star img">
+                <img src="assets/icons/star.png" alt="star img">
+              </div>
+              <p class="price" id="price">
+                <span class="amount">99.99</span> <span class="product-currency">MAD</span>
+              </p>
+
+              <h3 class="title">عنوان المنتج</h3>
+
+              <p class="description" id="description">
+                وصف المنتج هنا. لوريم إيبسوم دولور سيت أميت، كونسكتيتور
+                أديبيسينغ إيليت. نولا كونفالليس ليبرو أك بلانديت بلاسيرات.
+              </p>
+              <div class="form-group d-flex align-items-center">
+                <label for="quantity" id="quantity-label">العدد:</label>
+                <input type="number" id="quantity" name="quantity" class="form-control quantity-input text-center"
+                  style=" font-size: 1.2rem; width: auto" value="1" min="1" />
+              </div>
+
+
+              <div id="orderbutton_container">
+                <button id="orderButton" type="button" class="btn btn-primary add-to-cart mt-4 w-75">
+                  طلب المنتج <i class="fas fa-shopping-cart mr-2"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex align-items-center my-5">
+      <hr class="flex-grow-1" style="border-top: 2px solid #828282; margin: 0;">
+      <span class="mx-2 h2" style="color:rgb(80, 80, 80);" > منتجات ذات صلة</span>
+      <hr class="flex-grow-1" style="border-top: 2px solid #8a8a8a; margin: 0;">
+    </div>
+    <div class="row mt-4 mx-1" id="product-list">
+      <!-- Products will be loaded here dynamically -->
+    </div>
+
+
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/products_handler.js"></script>
+<script>
+  let filterproducts = {};
+  let current_Products_Page = 1;
+  let productsPerPage = 8;
+  let search_string = "";
+  let products_order_by = "new";
+  let product_category ;
+  let product_template ;
+
+  let product_id = 0;
+  $(document).ready(function () {
+    load_product();
+    $(".thumbnail-container").on("click", ".small-image", function () {
+      var newSrc = $(this).attr("src");
+      $("#mainProductImage").attr("src", newSrc);
+    });
+
+    // Trigger the modal when order button is clicked
+    $("#orderButton").click(function () {
+      $("#orderModal").modal("show");
+      $("#errorMessage").addClass("d-none");
+    });
+  });
+
+  function load_product() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    product_id = id;
+    console.log(id);
+    makeAjaxRequest(
+      "includes/seller/get_seller_products.inc.php",
+      "POST",
+      { product_id: id },
+      success_callback,
+      function (xhr, status, error) {
+        console.log("error callback ");
+      }
+    );
+  }
+
+  function success_callback(data) {
+    if (data.message) {
+      console.log("in success callback ");
+      var product = data.message;
+      console.log(data.message);
+      product_category = product.category_id;
+      $("#productContainer").attr("data-product-id", data.message.id);
+      $(".title").text(product.title);
+      $(".description").text(product.description);
+      $(".amount").text(product.price);
+      $(".add-to-cart").attr("data-product-id", product.id);
+      $('.product-currency').text('درهم');
+      // Dynamically load thumbnails if provided
+      if (product.images && product.images.length > 0) {
+        var thumbnails = JSON.parse(product.images);
+        $("#mainProductImage").attr("src", thumbnails[0]); // Set main image
+
+        var thumbnailContainer = $(".thumbnail-container");
+        thumbnailContainer.empty(); // Clear existing thumbnails
+
+        thumbnails.forEach(function (thumbSrc) {
+          thumbnailContainer.append(
+            `<img src="${thumbSrc}" class="img-thumbnail small-image" >`
+          );
+        });
+      }
+    }
+  }
+
+  function submit_order(event) {
+    event.preventDefault();
+    console.log("order submitted");
+    var form = document.getElementById("orderForm");
+    var formData = new FormData(form);
+    // Clear any previous error message
+    $("#errorMessage").addClass("d-none");
+
+    formData.append("productId", product_id);
+    makeAjaxRequest(
+      "includes/client/add_order.inc.php",
+      "POST",
+      formData,
+      order_success_callback,
+      error_callback
+    );
+  }
+  function order_success_callback(data) {
+    console.log("order message " + data.message);
+    if (data.success) {
+      Swal.fire({
+        icon: "success", // Green success icon
+        title: "تم الطلب بنجاح!", // Title in Arabic: Order Success
+        text: "سنقوم بالتواصل معكم عبر الواتساب خلال 24 ساعة لتأكيد طلبكم. شكرًا لثقتكم بنا", // Message in Arabic: Your order has been successfully submitted!
+        showConfirmButton: false, // Hide the confirm button
+        timer: 4000, // Show for 2 seconds
+        timerProgressBar: true, // Show timer progress bar
+      });
+      $("#orderModal").modal("hide");
+      $("#orderForm").trigger("reset");
+    } else {
+      $("#errorMessage").text(data.message).removeClass("d-none");
+    }
+  }
+  function error_callback(xhr, status, error) {
+    console.log("error in order submission");
+  }
+  
+
+
+  function load_products(filter) {
+    console.log(get_product_filter());
+    makeAjaxRequest(
+      "includes/seller/get_seller_products.inc.php",
+      "POST",
+      get_product_filter(),
+      load_products_success_callback,
+      true
+    );
+  }
+
+  function load_products_success_callback(data) {
+    console.log(data.message);
+    var $template = product_template.show();
+    $("#product-list").empty();
+    render_product_card(data.message, $template , $('#product-list'));
+    let navigation = $("#pagination");
+    set_navigation(data.pages, navigation, current_Products_Page);
+  }
+
+  function get_product_filter() {
+    let filter = {};
+    filter.searchQuery = search_string;
+    filter.page = current_Products_Page;
+    filter.items_per_page = productsPerPage;
+    filter.order_by = products_order_by;
+    filter.cat = product_category;
+    console.log("page is equal to " + filter.page);
+    
+    return filter;
+  }
+
+  fetch("layouts/order_modal.layout.html")
+    .then((response) => response.text())
+    .then((data) => {
+      $("#modalContainer").append(data);
+    });
+
+  fetch("layouts/product.layout.html")
+    .then((response) => response.text())
+    .then((data) => {
+      $("#product-template-container").append(data);
+      $("#product-template").addClass("col-md-3");
+      product_template = $("#product-template").clone().removeAttr("id");
+      load_products();
+    });
+
+
+</script>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            direction: rtl;
+        }
+
+        #featured-box {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 550px;
+            background-color: #d7c500;
+            border-radius: 20px;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #sec1 {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        #under-title {
+            margin-right: 30px;
+            font-weight: 500;
+            font-size: 1.4rem;
+        }
+        
+        #sec2
+        {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+        }
+        /* product card styling  */
+        .featured-product-card {
+            background-color: #ffffff;
+            max-width: 200px;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #featured-img-container img {
+            width: 170px;
+            margin: 0 auto;
+            border-radius: 10px;
+
+        }
+
+        #featured-img-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .featured-product-card .new-flag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgb(255, 0, 0);
+            /* Flag color */
+            color: white;
+            padding: 5px 10px;
+            font-size: 1.3rem;
+            font-family: monospace;
+            font-weight: bold;
+            border-radius: 3px;
+            border-radius: 30px;
+        }
+
+        .featured-card-title {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            color: rgb(69, 69, 69);
+            font-size: 1.3rem;
+            margin: 0;
+            max-width: 150px;
+            margin: 0  auto 5px auto; 
+        }
+
+      
+
+        .featured-price_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .price-featured {
+            font-size: 2rem;
+            font-weight: 800 !important;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .currency-featured {
+            font-size: 1.2rem;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="featured-box">
+            <div id="sec1">
+                <div id="title-container">
+                    <h1 id="title">منتجات جديدة </h1>
+                    <p id="under-title">اكتشف أحدث الإضافات</p>
+                </div>
+                <div id="button-container">
+                    <img src="../assets/icons/next-black.png" alt="">
+                </div>
+            </div>
+            <div id="sec2">
+
+
+                <!-- featured product template  -->
+                <div onclick="open_product_page(event)" class="card rounded-4 border-0  featured-product-card">
+                    <div id="featured-img-container">
+                        <a href="#" data-product-id="">
+                            <img src="../uploads/412c2t6A_YL._SY500_.jpg" class="card-img-top rounded-5" alt="" />
+                        </a>
+                        <span class="new-flag">جديد</span>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="featured-card-title">دبليج خاصخاصخاصخاص ب موس طحان</p>
+                      
+                        <div class="card-text featured-price_container"> <span class="currency-featured">
+                                درهم</span><span class="price-featured">100 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --------------------------------------- -->
+<!-- featured product template  -->
+<div onclick="open_product_page(event)" class="card rounded-4 border-0  featured-product-card">
+    <div id="featured-img-container">
+        <a href="#" data-product-id="">
+            <img src="../uploads/412c2t6A_YL._SY500_.jpg" class="card-img-top rounded-5" alt="" />
+        </a>
+        <span class="new-flag">جديد</span>
+    </div>
+    <div class="card-body text-center">
+        <p class="featured-card-title">دبليج خاصخاصخاصخاص ب موس طحان</p>
+      
+        <div class="card-text featured-price_container"> <span class="currency-featured">
+                درهم</span><span class="price-featured">100 </span>
+        </div>
+    </div>
+</div>
+
+<!-- --------------------------------------- -->
+<!-- featured product template  -->
+<div onclick="open_product_page(event)" class="card rounded-4 border-0  featured-product-card">
+    <div id="featured-img-container">
+        <a href="#" data-product-id="">
+            <img src="../uploads/412c2t6A_YL._SY500_.jpg" class="card-img-top rounded-5" alt="" />
+        </a>
+        <span class="new-flag">جديد</span>
+    </div>
+    <div class="card-body text-center">
+        <p class="featured-card-title">دبليج خاصخاصخاصخاص ب موس طحان</p>
+      
+        <div class="card-text featured-price_container"> <span class="currency-featured">
+                درهم</span><span class="price-featured">100 </span>
+        </div>
+    </div>
+</div>
+
+<!-- --------------------------------------- -->
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

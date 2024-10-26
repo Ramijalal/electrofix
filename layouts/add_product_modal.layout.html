@@ -1,0 +1,166 @@
+<!-- Add product form modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="addProductForm" method="post" enctype="multipart/form-data" onsubmit="productFormSubmit(event)">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            onclick="modal_clearImagePreviews()"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="formMode" name="id" value="" />
+          <div class="mb-3">
+            <label for="title" class="form-label">Product Title</label>
+            <input type="text" class="form-control" id="title" name="title" required />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" step="0.01" class="form-control" id="price" name="price" required />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" required>
+              <option value="">Select Category</option>
+              <option value="1">Blender</option>
+              <option value="2">Water Heater</option>
+              <option value="3">Oven</option>
+              <!-- Add more categories here -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="tagsInput" class="form-label">Tags</label>
+            <select id="tagsInput" name="tags[]" multiple>
+              <option value="" disabled selected>Select tags...</option>
+              <option value="new">New</option>
+              <option value="seasonal">Seasonal</option>
+       
+          </select>
+          </div>
+
+         
+        
+
+
+          <div class="mb-3">
+            <label for="productImages">Upload Product Images (Max 4):</label>
+            <input type="file" id="productImages" name="productImages[]" class="form-control" multiple accept="image/*"
+              onchange="previewImages(event)" />
+            <small id="imageCountWarning" class="text-danger" style="display: none">
+              You can upload a maximum of 4 images.
+            </small>
+          </div>
+          <div id="imagePreview" class="d-flex flex-wrap"></div>
+          <div id="imageTemplate" class="d-none">
+            <div class="position-relative m-1">
+              <img src="" class="img-thumbnail" style="max-width: 100px; max-height: 100px; object-fit: cover" />
+              <button type="button" class="btn position-absolute top-0 end-0 remove-btn"
+                style="border: none; background: none; cursor: pointer">
+                <img src="assets/icons/minus.png" alt="Remove" style="width: 20px; height: 20px" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="modal_clearImagePreviews()">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+
+ 
+$(document).ready(function () {
+var element = document.getElementById('tagsInput');
+var choices = new Choices(element, {
+    removeItemButton: true,  // Adds 'X' button to remove selected items
+    maxItemCount: 10,        // Set the max number of selections (optional)
+    searchResultLimit: 5,    // Limit the number of displayed search results (optional)
+    renderChoiceLimit: -1    // Limits the number of rendered choices (optional)
+});
+
+});
+  let selectedFiles = [];
+
+  function previewImages(event) {
+    const imagePreview = document.getElementById("imagePreview");
+    const imageCountWarning = document.getElementById("imageCountWarning");
+    imagePreview.innerHTML = ""; // Clear previous images
+    imageCountWarning.style.display = "none"; // Hide warning
+    selectedFiles = []; // Reset the selectedFiles array
+    const files = Array.from(event.target.files);
+    const totalFiles = selectedFiles.length + files.length;
+
+    console.log("number selected is  : " + totalFiles);
+
+    // Check for maximum of 4 images
+    if (totalFiles > 4) {
+      imageCountWarning.style.display = "block";
+      event.target.value = ""; // Reset the input
+      return;
+    }
+
+    files.forEach((file) => {
+      if (
+        file &&
+        file.type.startsWith("image/") &&
+        !selectedFiles.includes(file)
+      ) {
+        selectedFiles.push(file); // Add the file to the selectedFiles array
+
+        const template = document
+          .getElementById("imageTemplate")
+          .cloneNode(true);
+        template.classList.remove("d-none"); // Make the template visible
+        const img = template.querySelector("img");
+        const removeBtn = template.querySelector(".remove-btn");
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          img.src = e.target.result; // Set image source
+        };
+        reader.readAsDataURL(file);
+
+        // Attach the remove functionality to the button
+        removeBtn.onclick = function () {
+          imagePreview.removeChild(template); // Remove the image from the display
+          const index = selectedFiles.indexOf(file);
+          if (index > -1) {
+            selectedFiles.splice(index, 1); // Remove the file from the selectedFiles array
+          }
+
+          // Reset the input value and re-add only selected files
+          const fileInput = document.getElementById("productImages");
+          const dataTransfer = new DataTransfer();
+
+          selectedFiles.forEach((selectedFile) => {
+            dataTransfer.items.add(selectedFile); // Re-add remaining files to DataTransfer
+          });
+
+          fileInput.files = dataTransfer.files; // Update the input's files
+        };
+
+        imagePreview.appendChild(template);
+      }
+    });
+  }
+
+
+  function modal_clearImagePreviews() {
+    const imagePreview = document.getElementById("imagePreview");
+    imagePreview.innerHTML = ""; // Clear all thumbnails
+    selectedFiles = []; // Reset selected files array
+    const fileInput = document.getElementById("productImages");
+    fileInput.value = ""; // Reset file input
+  }
+</script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <style>
+    * {
+      direction: rtl;
+    }
+
+    #price {
+      font-weight: bold;
+      margin: 0;
+      font-size: 2.5rem;
+      font-family: "Lucida Sans", "Lucida Sans Unicode", sans-serif;
+    }
+
+    #description {
+      font-weight: 400;
+    }
+
+    #orderButton {
+      font-size: 1.5rem;
+      padding: 10px;
+      border-color: #aaa;
+      color: white;
+      margin: 0 auto;
+      background-color: #d3031c;
+      border-radius: 20px;
+    }
+
+    #orderbutton_container {
+      display: flex;
+    }
+
+    #shipping-container {
+      margin: 10px 0;
+      border: 2px solid rgb(207, 207, 207);
+      border-radius: 20px;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    #stars-container {
+      display: flex;
+      gap: 10px;
+      justify-content: start;
+      margin: 10px;
+      height: 25px;
+    }
+
+    @media (max-width: 768px) {
+      #shipping-container {
+        font-size: 1rem;
+        margin: 10px;
+      }
+
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="product-container shadow border p-4 rounded-5" id="productContainer" data_product_id="">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <img alt="Product Image" id="mainProductImage" class="img-fluid product-image border rounded-5 shadow"
+                src="uploads\Screenshot_25-6-2024_21260_www.aliexpress.com.jpeg" />
+              <!-- Thumbnail images -->
+              <div class="thumbnail-container mt-3 d-flex justify-content-center">
+                <img src="uploads\Screenshot_25-6-2024_211518_www.aliexpress.com.jpeg"
+                  class="img-thumbnail small-image rounded-5 mx-1" style="width: 100px; height: 100px; cursor: pointer"
+                  alt="Thumbnail 3" />
+                <!-- Add more thumbnail images as needed -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div id="shipping-container">
+                <img src="assets/icons/shipping_red.png" style="height: 40px; margin:5px 10px;"></img>
+                <span>الشحن الى جميع المدن المغربية </span>
+              </div>
+              <div id="stars-container">
+                <span>تقييم المنتج : </span>
+                <img src="assets/icons/star.png" alt="star img">
+                <img src="assets/icons/star.png" alt="star img">
+                <img src="assets/icons/star.png" alt="star img">
+              </div>
+              <p class="price" id="price">
+                <span class="currency">MAD</span> 99.99
+              </p>
+
+              <h3 class="title">عنوان المنتج</h3>
+
+              <p class="description" id="description">
+                وصف المنتج هنا. لوريم إيبسوم دولور سيت أميت، كونسكتيتور
+                أديبيسينغ إيليت. نولا كونفالليس ليبرو أك بلانديت بلاسيرات.
+              </p>
+              <div class="form-group">
+                <label for="quantity">العدد:</label>
+                <input type="number" id="quantity" name="quantity" class="form-control quantity-input text-center"
+                  style="font-size: 1.2rem" value="1" min="1" />
+              </div>
+
+              <div id="orderbutton_container">
+                <button id="orderButton" type="button" class="btn btn-primary add-to-cart mt-4 w-75">
+                  طلب المنتج <i class="fas fa-shopping-cart mr-2"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

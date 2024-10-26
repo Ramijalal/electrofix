@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Products</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <style>
+        #sec1 {
+            direction: rtl;
+            font-family: monospace;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        #title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 0 10 px;
+        }
+
+        #title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-transform: capitalize;
+        }
+
+        #under-title {
+            font-size: 1.5rem;
+            margin: 0 20px;
+            text-transform: capitalize;
+            font-weight: 550;
+
+        }
+
+        #button-container img {
+            width: 60px;
+            float: right;
+            margin: 20px 20px;
+            opacity: .8;
+            transition: transform .1s ease-in-out;
+            cursor: pointer;
+        }
+
+        #button-container img:hover {
+            transform: scale(1.1);
+        }
+
+        #featured-box {
+            margin: 0;
+            width: 800px;
+            max-width: 100%;
+            /* Ensures it won't overflow */
+            background-color: #d7c500;
+            border-radius: 20px;
+            padding: 5px 10px;
+
+            text-align: center;
+        }
+
+
+
+        /* ----------------- featured product styling -------------------- */
+        .featured-product-card {
+            background-color: #ffffff;
+            max-width: 180px;
+            /* Adjusted card size */
+            border-radius: 10px;
+            margin: 0 5px;
+            /* Add horizontal margin */
+            padding: 5px;
+            flex: 0 0 auto;
+            cursor: pointer;
+            /* Prevent items from shrinking */
+        }
+
+        .featured-img-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .featured-card-title {
+            font-size: 1.3rem;
+            max-width: 130px;
+            margin: 0 auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .price-featured {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* -------------------- slider styling ---------------------- */
+        .featured-box-slider {
+            width: 100%;
+            /* Makes sure the slider fits inside the box */
+            display: flex;
+            /* Add this to make it a flex container */
+            justify-content: center;
+            /* Center the items */
+            margin-bottom: 10px;
+
+        }
+
+        #featured-box:hover .slider-prev,
+        #featured-box:hover .slider-next {
+            opacity: 1;
+        }
+
+        .slider-prev,
+        .slider-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            width: 20px;
+            /* Set to the size of your custom icon */
+            height: 30px;
+            /* Set to the size of your custom icon */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 60%;
+            background-color: #ffffffa9;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
+            /* Remove any border */
+            outline: none;
+            /* Remove default outline */
+            border-radius: 50px;
+            padding: 20px;
+
+            transition: opacity 0.3s ease, background-size 200ms ease-in-out;
+            opacity: 0;
+        }
+
+
+
+        .slider-prev:before,
+        .slider-next:before {
+            content: '';
+
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover {
+
+            background-size: 80%;
+            background-color: #ffffff;
+        }
+
+
+        .slider-prev {
+            left: 10px;
+            background-image: url('assets/icons/left-arrow.png');
+
+        }
+
+        .slider-next {
+            right: 10px;
+            background-image: url('assets/icons/right-arrow.png');
+
+        }
+
+        main {
+            display: flex;
+            max-width: 90%;
+            margin: 0 auto;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+
+        <div id="featured-box">
+            <div id="sec1">
+                <div id="title-container">
+                    <h1 id="title">منتجات جديدة </h1>
+                    <p id="under-title">اكتشف أحدث الإضافات</p>
+                </div>
+                <div id="button-container">
+                    <img src="assets/icons/next-black.png" alt="">
+                </div>
+            </div>
+            <div class="featured-box-slider">
+                <!-- Product Cards -->
+                <div id="featured-product-template" class="card featured-product-card " hidden>
+                    <div class="featured-img-container">
+                        <img src="../uploads/412c2t6A_YL._SY500_.jpg" alt="Product 1" />
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="featured-card-title">Product 1</p>
+                        <div class="price-featured">100 درهم</div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- Additional Product Cards -->
+            </div>
+        </div>
+
+
+    </main>
+    <script src="js/funcs.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+
+
+        let filterproducts = {};
+        let current_Products_Page = 1;
+        let productsPerPage = 5;
+        let search_string = "";
+        let products_order_by = "old";
+        let product_category;
+        let product_template;
+        //document ready  
+
+
+        $(document).ready(function () {
+
+            product_template = $("#featured-product-template").clone();
+
+            load_products();
+
+
+        });
+
+        function load_products(filter) {
+            console.log(get_product_filter());
+            makeAjaxRequest(
+                "includes/seller/get_seller_products.inc.php",
+                "POST",
+                get_product_filter(),
+                load_products_success_callback,
+                true
+            );
+        }
+
+        function load_products_success_callback(data) {
+            console.log(data.message);
+            var $template = product_template.show();
+            $(".featured-box-slider").empty();
+            render_product_card(data.message, $template, $('.featured-box-slider'));
+            set_slider();
+        }
+
+
+        function get_product_filter() {
+            let filter = {};
+            filter.searchQuery = search_string;
+            filter.page = current_Products_Page;
+            filter.items_per_page = productsPerPage;
+            filter.order_by = products_order_by;
+            filter.cat = product_category;
+            console.log("page is equal to " + filter.page);
+
+            return filter;
+        }
+
+        function render_product_card(products, $template, container) {
+            products.forEach(function (product) {
+                let $card = $template.clone();
+                $card.removeAttr('hidden');
+                $card.find(".featured-card-title").text(product.title);
+                $card.find(".price-featured").text(product.price + " درهم");
+
+                if (product.images.length > 0) {
+                    var images = JSON.parse(product.images);
+                    $card.find(".featured-img-container img").attr("src", images[0]); // Set main image
+                } else {
+                    $card.find(".featured-img-container img").attr('src', product.image);
+                }
+
+                container.append($card);
+            });
+        }
+
+        function set_slider() {
+
+            $('.featured-box-slider').slick({
+                slidesToShow: 4,   // Only show 3 products at a time
+                slidesToScroll: 4,
+                arrows: true,      // Enable arrows
+                // Enable dots
+                infinite: true,
+                cssEase: 'ease-in-out',
+                autoplay: true,
+                autoplaySpeed: 2000,
+                prevArrow: '<div class="slider-prev"></div>', // Custom previous arrow
+                nextArrow: '<div class="slider-next"></div>', // Custom next arrow
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        }
+
+    </script>
+</body>
+
+</html>

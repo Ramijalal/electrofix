@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <title>Document</title>
+</head>
+<body>
+    <select id="tagsInput" multiple>
+        <option value="angular">Angular</option>
+        <option value="bootstrap">Bootstrap</option>
+        <option value="react">React.js</option>
+        <option value="vue">Vue.js</option>
+        <option value="django">Django</option>
+        <option value="laravel">Laravel</option>
+        <option value="nodejs">Node.js</option>
+    </select>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    var element = document.getElementById('tagsInput');
+    var choices = new Choices(element, {
+        removeItemButton: true,  // Adds 'X' button to remove selected items
+        maxItemCount: 10,        // Set the max number of selections (optional)
+        searchResultLimit: 5,    // Limit the number of displayed search results (optional)
+        renderChoiceLimit: -1    // Limits the number of rendered choices (optional)
+    });
+});
+
+    </script>
+</body>
+</html>

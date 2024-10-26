@@ -1,0 +1,133 @@
+ 
+ <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+   
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
+}
+
+#sidebar {
+    position: sticky; /* Make the sidebar sticky */
+    top: 0; /* Stick to the top of the viewport */
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all 0.25s ease-in-out;
+    background-color: #212529;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height to cover entire viewport */
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: 0.625rem 1.625rem;
+    color: #fff;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+    border-left: 3px solid #3b7ddd;
+}
+
+/* Active Sidebar Link */
+a.sidebar-link.active {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background for active link */
+    border-left: 3px solid #3b7ddd;
+}
+
+/* Non-active Sidebar Link */
+a.sidebar-link {
+    background-color: transparent; /* Ensure non-active links have no background */
+    border-left: 3px solid transparent; /* Remove border for non-active links */
+    transition: all 0.3s ease; /* Smooth transition for background and border */
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight hover effect */
+    border-left: 3px solid #3b7ddd;
+}
+
+
+    </style>
+    
+      <div class="wrapper">
+        <aside id="sidebar">
+          <div class="d-flex">
+           
+            <button class="toggle-btn" type="button">
+              <i class="lni lni-grid-alt"></i>
+            </button>
+            <div class="sidebar-logo">
+              <a href="#"  >Seller Panel</a>
+            </div>
+          </div>
+          <ul class="sidebar-nav">
+            <li class="sidebar-item">
+              <a href="#"  data-target="#products-container " id="tab" data-tab="products" class="sidebar-link active">
+                <i class="fa-brands fa-product-hunt"></i>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a href="#"  data-target="#orders-container" id="tab" data-tab="orders" class="sidebar-link">
+                <i class="fa-solid fa-list"></i>
+                <span>Orders</span>
+              </a>
+            </li>
+
+
+          
+        </aside>
+        
+      </div>
+    
+    
