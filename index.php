@@ -45,8 +45,17 @@ function getPageContent($page)
     <!-- multi select library for the dashboard tag selection  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
+    <!-- sweet alert library  href -->
     <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
     <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <!-- featured box stylesheet  -->
+    <link rel="stylesheet" href="css/fearured_box/featured_box.css">
+
+    <!-- carousel library href -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
     <title>Document</title>
 
@@ -54,27 +63,27 @@ function getPageContent($page)
 </head>
 
 <body>
-    
-    
+
+
     <?php include 'layouts/header.php'; ?>
     <?php echo $htmlcontent; ?>
-   
-   
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
     <script src="js/funcs.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- multi select library for the dashboard tag selection -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
-
+ <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
 <script>
-    
+
 </script>
 
 </body>

@@ -2,19 +2,10 @@
 
 require_once '../funcs.inc.php';
 require_once '../dbh.inc.php';
-//require_once '../auth.inc.php';
-//try_session_start();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // checking authorization 
-
-    /*
-    if(!$loggedin ||  $user_role !== 'seller'){
-        echo json_encode(['success' => false, 'error' => 'Unauthorized']);
-        exit();
-    }
-    */
 
     try {
 

@@ -1,15 +1,13 @@
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 650px;
-    direction: rtl;
-    background-color: #FFEADF;
-    border-radius: 30px;
-    padding: 10px;
+:root {
+    --icon-left: url('../../assets/icons/left-arrow.png');
+    --icon-right: url('../../assets/icons/right-arrow.png');
+    --featuredbox-background-color:  #a8c524b8;
+    --product-price-font-size : 1.4rem;
+    --product-title-font-size : 1.2rem;
 }
 
 #sec1 {
+    direction: rtl;
     font-family: monospace;
     width: 100%;
     display: flex;
@@ -20,7 +18,8 @@ main {
 #title-container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start; 
+    padding: 0 10px;
 }
 
 #title {
@@ -28,7 +27,7 @@ main {
     font-weight: bold;
     margin-left: 20px;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     text-transform: capitalize;
 }
 
@@ -36,6 +35,7 @@ main {
     font-size: 1.5rem;
     margin: 0 20px;
     text-transform: capitalize;
+    font-weight: 550;
 
 }
 
@@ -51,33 +51,118 @@ main {
 #button-container img:hover {
     transform: scale(1.1);
 }
-
-#sec2 {
+#featured-box {
+    margin: 0;
+    max-width: 800px; 
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 5px;
-    padding: 10px;
+    background-color: var(--featuredbox-background-color);
+    border-radius: 20px;
+    padding: 5px 10px;
+    text-align: center;
 }
 
-#item {
-    width: 200px;
+
+
+/* ----------------- featured product styling -------------------- */
+.featured-product-card {
+    background-color: #ffffff;
+    max-width: 180px;
     border-radius: 10px;
-    height: 300px;
-    margin: 10px 0;
+    margin: 0 5px;
+    padding: 5px;
+    flex: 0 0 auto;
     cursor: pointer;
-
-    transition: transform .2s ease-in-out;
 }
 
-#item:hover {
-    transform: scale(1.05);
+.featured-img-container img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-#container {
+.featured-card-title {
+    font-size: var(--product-title-font-size);
+    max-width: 130px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-featured {
+    font-size: var(--product-price-font-size);
+    font-weight: bold;
+}
+
+/* -------------------- slider styling ---------------------- */
+.featured-box-slider {
+    width: 100%;
+    
     display: flex;
-    gap: 20px;
     justify-content: center;
+    margin-bottom: 10px;
 
+}
+
+#featured-box:hover .slider-prev,
+#featured-box:hover .slider-next {
+    opacity: 1;
+}
+
+.slider-prev,
+.slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 10px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    background-color: #ffffffa9;
+    z-index: 1;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    padding: 20px;
+
+    transition: opacity 0.3s ease, background-size 200ms ease-in-out;
+    opacity: 0;
+}
+
+
+
+.slider-prev:before,
+.slider-next:before {
+    content: '';
+
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    
+    background-size: 80%;
+    background-color: #ffffff;
+}
+
+
+.slider-prev {
+    left: 10px;
+    background-image:  var(--icon-left);
+
+}
+
+.slider-next {
+    right: 10px;
+    background-image: var(--icon-right);
+
+}
+
+main {
+    display: flex;
+    max-width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 10px;
 }

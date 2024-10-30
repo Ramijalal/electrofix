@@ -5,4 +5,6 @@ DB::$user = 'root';
 DB::$password = '';
 DB::$dbName = 'electrodb';
 DB::$host = 'localhost'; // adjust as necessary
+DB::$encoding = 'utf8mb4';
+
 ?>

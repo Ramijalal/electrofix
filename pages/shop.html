@@ -1,10 +1,12 @@
-<style>
- 
 
-</style>
 
 <div class="container-fluid p-5 d-flex flex-column justify-content-center align-content-center mt-5">
 
+
+  <div id="featuredbox_container" style="display: flex; flex-direction: row; justify-content: center;">
+
+
+  </div>
 
   <!-- this is the single product template  -->
   <div id="product-template-container" hidden>
@@ -23,6 +25,11 @@
       <!-- Pagination items will be loaded here dynamically -->
     </ul>
   </nav>
+
+
+
+
+  <script src="js/featuredbox/featuredbox.js"></script>
   <script src="js/products_handler.js"></script>
   <script>
     let filterproducts = {};
@@ -32,8 +39,9 @@
     let products_order_by = "new";
 
     let product_template;
+   
     $(document).ready(function () {
-
+      initialize_featured_box('#featuredbox_container','new' ,5);
 
 
       $("#searchQuery").on("input", function () {
@@ -108,6 +116,6 @@
 
       });
 
-
+     
   </script>
 </div>
