@@ -1,9 +1,9 @@
 :root {
     --icon-left: url('../../assets/icons/left-arrow.png');
     --icon-right: url('../../assets/icons/right-arrow.png');
-    --featuredbox-background-color:  #a8c524b8;
-    --product-price-font-size : 1.4rem;
-    --product-title-font-size : 1.2rem;
+    --featuredbox-background-color: #a8c524b8;
+    --product-price-font-size: 1.4rem;
+    --product-title-font-size: 1.2rem;
 }
 
 #sec1 {
@@ -18,22 +18,23 @@
 #title-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
     padding: 0 10px;
+    justify-content: center;
 }
 
 #title {
     font-size: 2rem;
     font-weight: bold;
-    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     text-transform: capitalize;
 }
 
 #under-title {
     font-size: 1.5rem;
-    margin: 0 20px;
+    margin: 0 30px;
     text-transform: capitalize;
     font-weight: 550;
 
@@ -51,9 +52,10 @@
 #button-container img:hover {
     transform: scale(1.1);
 }
+
 #featured-box {
     margin: 0;
-    max-width: 800px; 
+    max-width: 800px;
     width: 100%;
     background-color: var(--featuredbox-background-color);
     border-radius: 20px;
@@ -66,11 +68,16 @@
 /* ----------------- featured product styling -------------------- */
 .featured-product-card {
     background-color: #ffffff;
-    max-width: 180px;
+    max-width: calc(50% - 10px);
+    /* Adjust width to fit two cards with some space */
     border-radius: 10px;
     margin: 0 5px;
+    /* Margin to create space between cards */
     padding: 5px;
     flex: 0 0 auto;
+    /* Prevent cards from shrinking */
+    box-sizing: border-box;
+    /* Include padding and border in element's total width */
     cursor: pointer;
 }
 
@@ -91,12 +98,13 @@
 .price-featured {
     font-size: var(--product-price-font-size);
     font-weight: bold;
+    line-height: 1.2rem;
 }
 
 /* -------------------- slider styling ---------------------- */
 .featured-box-slider {
     width: 100%;
-    
+
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -141,7 +149,7 @@
 
 .slider-prev:hover,
 .slider-next:hover {
-    
+
     background-size: 80%;
     background-color: #ffffff;
 }
@@ -149,7 +157,7 @@
 
 .slider-prev {
     left: 10px;
-    background-image:  var(--icon-left);
+    background-image: var(--icon-left);
 
 }
 
@@ -165,4 +173,75 @@ main {
     margin: 0 auto;
     justify-content: center;
     gap: 10px;
+}
+
+.divider-h {
+    height: 3px;
+    margin: 10px 0;
+    background-color: rgba(0, 0, 0, 0.081);
+
+}
+
+@media (max-width: 768px) {
+
+    #featured-box {
+        max-width: 90%;
+        padding: 5px 10px;
+        margin: 0 auto;
+
+    }
+
+    .featured-product-card {
+        max-width: 200px;
+
+    }
+
+    #title {
+        font-size: 1.4rem;
+        margin: 0;
+
+    }
+
+    #under-title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 550;
+        padding:0; 
+    }
+
+    #button-container img {
+        width: 40px;
+        margin: 10px;
+    }
+
+    .slider-prev,
+    .slider-next {
+        padding: 15px;
+        opacity: 100%;
+    }
+
+    #title-container {
+     
+        margin-bottom: 5px;
+    }
+
+    .divider-h {
+        height: 2px;
+        margin: 5px 0;
+        background-color: rgba(0, 0, 0, 0.196);
+
+    }
+
+    .featured-card-title {
+        max-width: 130px;
+        font-size: 1.2rem;
+        color: rgb(39, 39, 39);
+    }
+
+    .price-featured {
+        font-size: var(--product-price-font-size);
+        font-weight: bold;
+        font-size: 1.2rem;
+
+    }
 }
