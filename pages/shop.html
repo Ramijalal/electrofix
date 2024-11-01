@@ -1,14 +1,15 @@
+<div id="main" class="container-fluid  d-flex flex-column  align-items-center   ">
 
+<div id='featured-container' class=" mx-1" >
 
-<div class="container-fluid p-5 d-flex flex-column justify-content-center align-content-center mt-5">
-
-
-  <div id="featuredbox_container" style="display: flex; flex-direction: row; justify-content: center;">
-
-
+  <div id="featuredbox_container" class="text-center">
+    
+    
   </div>
-<div id="conf">
-
+  <div id="conf">
+    
+  </div>
+  
 </div>
   <!-- this is the single product template  -->
   <div id="product-template-container" hidden>
@@ -41,10 +42,14 @@
     let products_order_by = "new";
 
     let product_template;
-   
+
     $(document).ready(function () {
-      initialize_featured_box('#conf','new' ,7);
-      initialize_featured_box('#featuredbox_container','new' ,5);
+      initialize_featured_box('#featuredbox_container',"#FF9C73", 'new',5);
+      initialize_featured_box('#conf',"#FBD288", 'seasonal', 8);
+
+     
+       setTimeout(function () {
+       }, 200);
 
 
       $("#searchQuery").on("input", function () {
@@ -113,12 +118,12 @@
       .then((response) => response.text())
       .then((data) => {
         $("#product-template-container").append(data);
-        $("#product-template").addClass("col-md-2");
+        $("#product-template").addClass("col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2");
         product_template = $("#product-template").clone().removeAttr("id");
         load_products();
 
       });
 
-     
+
   </script>
 </div>

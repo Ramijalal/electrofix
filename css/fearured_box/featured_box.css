@@ -6,7 +6,7 @@
     --product-title-font-size: 1.2rem;
 }
 
-#sec1 {
+.sec1 {
     direction: rtl;
     font-family: monospace;
     width: 100%;
@@ -15,7 +15,7 @@
     justify-content: space-between;
 }
 
-#title-container {
+.sec1 .title-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -23,16 +23,16 @@
     justify-content: center;
 }
 
-#title {
+ .sec1 .box-title {
     font-size: 2rem;
     font-weight: bold;
+    line-height: 0.8 !important;
     margin-right: 20px;
-    margin-bottom: 10px;
     margin-top: 5px;
     text-transform: capitalize;
 }
 
-#under-title {
+.sec1 .box-under-title {
     font-size: 1.5rem;
     margin: 0 30px;
     text-transform: capitalize;
@@ -40,24 +40,25 @@
 
 }
 
-#button-container img {
-    width: 60px;
+.sec1 .button-container img {
+    width: 70px;
     float: right;
-    margin: 20px 20px;
+    margin: 10px 10px;
     opacity: .8;
-    transition: transform .1s ease-in-out;
+    transition:opacity .1s, transform .1s ease-in-out;
     cursor: pointer;
 }
 
-#button-container img:hover {
+.sec1   .button-container img:hover {
     transform: scale(1.1);
+    opacity: 1;
 }
 
-#featured-box {
+.featured-box {
     margin: 0;
     max-width: 800px;
     width: 100%;
-    background-color: var(--featuredbox-background-color);
+    /* background-color: var(--featuredbox-background-color); */
     border-radius: 20px;
     padding: 5px 10px;
     text-align: center;
@@ -69,21 +70,21 @@
 .featured-product-card {
     background-color: #ffffff;
     max-width: calc(50% - 10px);
-    /* Adjust width to fit two cards with some space */
-    border-radius: 10px;
+    border-radius: 10px !important;
     margin: 0 5px;
-    /* Margin to create space between cards */
     padding: 5px;
     flex: 0 0 auto;
-    /* Prevent cards from shrinking */
     box-sizing: border-box;
-    /* Include padding and border in element's total width */
     cursor: pointer;
 }
 
 .featured-img-container img {
     width: 100%;
     border-radius: 10px;
+    height: 170px; /* Set desired height */
+    object-fit: cover;
+    /* Optional: to ensure it doesn't overflow its container */
+    overflow: hidden;
 }
 
 .featured-card-title {
@@ -99,20 +100,23 @@
     font-size: var(--product-price-font-size);
     font-weight: bold;
     line-height: 1.2rem;
+    max-width: 130px;
+    margin: 0 auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /* -------------------- slider styling ---------------------- */
 .featured-box-slider {
     width: 100%;
-
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 
 }
 
-#featured-box:hover .slider-prev,
-#featured-box:hover .slider-next {
+.featured-box:hover .slider-prev,
+.featured-box:hover .slider-next {
     opacity: 1;
 }
 
@@ -175,7 +179,7 @@ main {
     gap: 10px;
 }
 
-.divider-h {
+.featured-box   .divider-h {
     height: 3px;
     margin: 10px 0;
     background-color: rgba(0, 0, 0, 0.081);
@@ -184,34 +188,36 @@ main {
 
 @media (max-width: 768px) {
 
-    #featured-box {
-        max-width: 90%;
-        padding: 5px 10px;
+    .featured-box {
+        max-width: 100%;
+        padding: 5px;
         margin: 0 auto;
-
+        border-radius: 0;
+        border-radius: 10px;
     }
 
     .featured-product-card {
         max-width: 200px;
+        margin: 3px;
 
     }
 
-    #title {
+    .title-container .box-title {
         font-size: 1.4rem;
         margin: 0;
 
     }
 
-    #under-title {
+    .title-container .box-under-title {
         margin: 0;
         font-size: 1.2rem;
         font-weight: 550;
         padding:0; 
     }
 
-    #button-container img {
-        width: 40px;
-        margin: 10px;
+   .sec1 .button-container img {
+        width: 50px;
+        margin : 10px 5px ;
     }
 
     .slider-prev,
@@ -220,12 +226,13 @@ main {
         opacity: 100%;
     }
 
-    #title-container {
+    .title-container {
      
         margin-bottom: 5px;
+
     }
 
-    .divider-h {
+    .featured-box .divider-h {
         height: 2px;
         margin: 5px 0;
         background-color: rgba(0, 0, 0, 0.196);
@@ -234,14 +241,17 @@ main {
 
     .featured-card-title {
         max-width: 130px;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: rgb(39, 39, 39);
     }
 
     .price-featured {
         font-size: var(--product-price-font-size);
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
 
+    }
+    .featured-img-container img {
+        height: 150px; /* Set desired height */
     }
 }

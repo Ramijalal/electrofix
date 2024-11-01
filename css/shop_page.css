@@ -1,0 +1,49 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;  /* Prevents horizontal scrollbars */
+}
+#main{
+    margin-top: 20px;
+    
+}
+#featured-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+#featuredbox_container{
+    
+    margin: 0;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    min-width: 280px; /* Set this to the desired min width */
+}
+
+
+
+
+
+/* Styling for small screens */
+@media (max-width: 800px) {
+    #main{
+        margin-top: 10px;
+        padding: 0  ;
+        
+    }
+    #featured-container {
+        flex-direction: column;
+        width: 95%;
+        padding: 0;
+        gap: 10px;
+    }
+    #featuredbox_container{
+    margin: 0;
+}
+
+}

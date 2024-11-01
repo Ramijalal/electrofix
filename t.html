@@ -9,12 +9,22 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <title>Document</title>
+    <style>
+
+        /* Add your CSS styles here */
+
+        #featuredbox_container {
+            margin: 10px;
+          
+        }
+    </style>
 </head>
 <body>
-    <div id="featuredbox_container">
+    <div id="featuredbox_container" >
 
 
     </div>
+    <div id="21"></div>
     <script src="js/funcs.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -22,7 +32,8 @@
     <script src="js/featuredbox/featuredbox.js"> </script>
     <script>
         $(document).ready(() => {
-            initialize_featured_box('#featuredbox_container', DEFAULT_TAG, DEFAULT_LIMIT);
+            initialize_featured_box('#featuredbox_container', DEFAULT_TAG, 5);
+            initialize_featured_box('#21', 'seasonal', 5);
         });
     </script>
 </body>

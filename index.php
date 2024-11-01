@@ -42,6 +42,7 @@ function getPageContent($page)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 
+
     <!-- multi select library for the dashboard tag selection  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
@@ -57,6 +58,11 @@ function getPageContent($page)
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
+
+    <!-- stylesheet for the shop page ------- -->
+    <link rel="stylesheet" href="css/shop_page.css">
+
+    
     <title>Document</title>
 
 
@@ -79,12 +85,12 @@ function getPageContent($page)
     <!-- multi select library for the dashboard tag selection -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
- <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
-<script>
+    <script>
 
-</script>
+    </script>
 
 </body>
 
